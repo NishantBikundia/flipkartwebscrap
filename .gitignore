@@ -1,0 +1,17 @@
+# Ignore environment variable files
+.env
+config.py
+
+# Python bytecode
+__pycache__/
+*.py[cod]
+
+# Virtual environment
+venv/
+env/
+
+# Log files
+*.log
+
+# Miscellaneous
+*.sqlite3
