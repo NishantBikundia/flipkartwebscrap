@@ -2,14 +2,19 @@ from flask import Flask, render_template, request, redirect, url_for
 from pymongo import MongoClient
 from selenium import webdriver
 from bs4 import BeautifulSoup
+from dotenv import load_dotenv
 import os
 import time
 
+# Load environment variables from .env file
+load_dotenv()
+
 app = Flask(__name__)
 
-# MongoDB setup
-client = MongoClient('mongodb+srv://Manya:Manya%40072007@cluster0.grkkany.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0')
-db = client['flipkart_reviews']
+# MongoDB setup using environment variable
+mongo_uri = os.getenv('MONGODB_URI')  # Get MongoDB URI from environment variables
+client = MongoClient(mongo_uri)
+db = client['flipkart_reviews']  # Replace with your database name if needed
 collection = db['products']
 
 @app.route('/')
